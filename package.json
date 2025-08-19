@@ -1,0 +1,59 @@
+{
+  "name": "pdufa-tracker",
+  "version": "1.0.0",
+  "description": "AI-powered PDUFA calendar for biotech investors",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "build": "echo 'Frontend is static HTML - no build needed'",
+    "db:setup": "npx prisma migrate deploy && npx prisma db seed",
+    "db:seed": "node scripts/seed.js",
+    "db:migrate": "npx prisma migrate dev",
+    "sync:fda": "node scripts/syncFDA.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint .",
+    "deploy": "npm run db:setup && npm start",
+    "postinstall": "npx prisma generate"
+  },
+  "keywords": [
+    "pdufa",
+    "fda",
+    "biotech",
+    "pharma",
+    "calendar",
+    "investing",
+    "drug-approval"
+  ],
+  "author": "PDUFA Tracker Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/pdufa-tracker.git"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "@prisma/client": "^5.7.1",
+    "dotenv": "^16.3.1",
+    "helmet": "^7.1.0",
+    "compression": "^1.7.4",
+    "express-rate-limit": "^7.1.5",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "zod": "^3.22.4",
+    "date-fns": "^3.0.6"
+  },
+  "devDependencies": {
+    "prisma": "^5.7.1",
+    "nodemon": "^3.0.2",
+    "jest": "^29.7.0",
+    "eslint": "^8.56.0",
+    "@types/node": "^20.10.6"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  }
+}
