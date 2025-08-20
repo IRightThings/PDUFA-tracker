@@ -30,9 +30,10 @@ model Company {
   // Relationships
   pdufaEvents       PDUFAEvent[]
   clinicalTrials    ClinicalTrial[]
-  newsArticles      NewsArticle[]
+  newsArticles      NewsArticle[] @relation("NewsCompanyMention")
   secFilings        SECFiling[]
-  
+
+
   // Metadata
   createdAt         DateTime           @default(now())
   updatedAt         DateTime           @updatedAt
@@ -139,8 +140,8 @@ model NewsArticle {
   sentimentScore    Float?    // -1.0 to 1.0
   
   // Associations
-  companiesId       String[]  // Array of company IDs mentioned
-  companies         Company[] @relation(references: [id])
+// FIXED - Proper many-to-many relation
+  companies         Company[] @relation("NewsCompanyMention")
   
   // Dates
   publishedAt       DateTime
